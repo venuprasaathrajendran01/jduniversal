@@ -1,0 +1,178 @@
+/* Global styles with Tailwind CSS 4+ */
+@import url('https://fonts.googleapis.com/icon?family=Material+Icons');
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --color-bg-base: #071a38;
+    --color-bg-navy: #0E2F5F;
+    --color-gold: #F5C518;
+    --color-orange: #FFB033;
+    --color-teal: #0F4C5C;
+    --color-teal-dark: #043B3F;
+  }
+
+  body {
+    font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+    background-color: #071a38;
+    color: #e2e8f0;
+    overflow-x: hidden;
+  }
+
+  h1, h2, h3, h4, h5, h6, .font-display {
+    font-family: 'Outfit', sans-serif;
+    letter-spacing: -0.02em;
+  }
+}
+
+/* Custom Scrollbar in Luxury Gold */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #071a38;
+}
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #F5C518 0%, #FFB033 100%);
+  border-radius: 9999px;
+  border: 2px solid #071a38;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #F5C518;
+}
+
+/* Glassmorphism surfaces */
+.glass-panel {
+  background: rgba(14, 47, 95, 0.45);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(245, 197, 24, 0.12);
+}
+
+.glass-panel-hover {
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.glass-panel-hover:hover {
+  background: rgba(14, 47, 95, 0.7);
+  border-color: rgba(245, 197, 24, 0.35);
+  box-shadow: 0 10px 30px -10px rgba(245, 197, 24, 0.15);
+  transform: translateY(-3px);
+}
+
+/* Gold Gradient Text */
+.text-gradient-gold {
+  background: linear-gradient(135deg, #FFF1B8 0%, #F5C518 50%, #FFB033 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.text-gradient-teal {
+  background: linear-gradient(135deg, #4ade80 0%, #2dd4bf 50%, #0F4C5C 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Glowing Border Accent */
+.border-gold-glow {
+  box-shadow: 0 0 25px -5px rgba(245, 197, 24, 0.25);
+}
+
+/* Subtle Film Grain Overlay */
+.film-grain {
+  background-image: radial-gradient(rgba(245, 197, 24, 0.04) 1px, transparent 0);
+  background-size: 24px 24px;
+}
+
+/* Geometric Corner Motif for Cards & Headers */
+.corner-accent-tl {
+  position: relative;
+}
+.corner-accent-tl::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 0;
+  border-top: 24px solid #F5C518;
+  border-right: 24px solid transparent;
+  border-top-left-radius: 12px;
+  opacity: 0.85;
+}
+
+.corner-accent-br {
+  position: relative;
+}
+.corner-accent-br::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 0;
+  height: 0;
+  border-bottom: 24px solid #FFB033;
+  border-left: 24px solid transparent;
+  border-bottom-right-radius: 12px;
+  opacity: 0.85;
+}
+
+/* Custom Cursor */
+.custom-cursor-dot {
+  pointer-events: none;
+  position: fixed;
+  z-index: 9999;
+  width: 8px;
+  height: 8px;
+  background-color: #F5C518;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  transition: transform 0.05s ease-out;
+  box-shadow: 0 0 10px #F5C518;
+}
+
+.custom-cursor-ring {
+  pointer-events: none;
+  position: fixed;
+  z-index: 9998;
+  width: 36px;
+  height: 36px;
+  border: 1.5px solid rgba(245, 197, 24, 0.5);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  transition: width 0.25s ease, height 0.25s ease, border-color 0.25s ease, transform 0.12s ease-out;
+}
+
+.cursor-hover .custom-cursor-ring {
+  width: 54px;
+  height: 54px;
+  border-color: #F5C518;
+  background-color: rgba(245, 197, 24, 0.08);
+}
+
+/* Pulse Audio Waves */
+@keyframes waveAnimation {
+  0%, 100% {
+    height: 6px;
+  }
+  50% {
+    height: 32px;
+  }
+}
+.animate-wave-1 { animation: waveAnimation 1.2s ease-in-out infinite 0.1s; }
+.animate-wave-2 { animation: waveAnimation 1.4s ease-in-out infinite 0.3s; }
+.animate-wave-3 { animation: waveAnimation 1.0s ease-in-out infinite 0.5s; }
+.animate-wave-4 { animation: waveAnimation 1.3s ease-in-out infinite 0.2s; }
+.animate-wave-5 { animation: waveAnimation 1.5s ease-in-out infinite 0.4s; }
+
+/* Glitch Animation for Coming Soon */
+@keyframes glitchEffect {
+  0% { transform: translate(0) }
+  20% { transform: translate(-2px, 2px) }
+  40% { transform: translate(-2px, -2px) }
+  60% { transform: translate(2px, 2px) }
+  80% { transform: translate(2px, -2px) }
+  100% { transform: translate(0) }
+}
+.glitch-hover:hover {
+  animation: glitchEffect 0.3s infinite;
+}

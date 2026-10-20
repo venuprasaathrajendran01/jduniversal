@@ -1,0 +1,90 @@
+<!-- Custom Glowing Golden Cursor -->
+<app-cursor></app-cursor>
+
+<!-- Cinematic Page-Load Intro Curtain Reveal -->
+@if (showIntroCurtain()) {
+  <button 
+    type="button"
+    class="fixed inset-0 z-50 bg-[#071a38] flex flex-col items-center justify-center transition-opacity duration-700 ease-out select-none cursor-pointer w-full h-full border-0 p-0 text-left"
+    (click)="dismissIntro()"
+    aria-label="Click or press to enter website and skip intro">
+    
+    <div class="flex flex-col items-center gap-4 animate-pulse">
+      <!-- Official JD Universal Logo Badge -->
+      <img 
+        src="/logo.png" 
+        alt="JD Universal SDN BHD Official Logo" 
+        class="w-24 h-24 rounded-full object-contain shadow-[0_0_40px_rgba(245,197,24,0.4)] drop-shadow-xl" 
+        referrerpolicy="no-referrer" />
+      
+      <div class="text-center">
+        <span class="font-display text-lg font-bold tracking-tight text-white block">JD UNIVERSAL SDN BHD</span>
+        <span class="text-xs uppercase tracking-widest text-[#F5C518] font-semibold">From Vision to Reality</span>
+      </div>
+    </div>
+  </button>
+}
+
+<div class="min-h-screen bg-[#071a38] text-slate-100 flex flex-col selection:bg-[#F5C518] selection:text-[#071a38]">
+  
+  <!-- Sticky Global Navigation -->
+  <app-navbar (openBookingModal)="onRequestBooking('General Booking')"></app-navbar>
+
+  <!-- Main Content Landmark -->
+  <main class="flex-grow">
+    <!-- 1. HERO -->
+    <app-hero></app-hero>
+
+    <!-- 2. ABOUT STORY & STATS -->
+    <app-about></app-about>
+
+    <!-- 3. VISION MANIFESTO -->
+    <app-vision></app-vision>
+
+    <!-- 4. 14 CORE SERVICES -->
+    <app-services (selectService)="onSelectService($event)"></app-services>
+
+    <!-- 5. FEATURED PROJECTS (HERO CATALOG) -->
+    <app-projects (selectProject)="onSelectProject($event)"></app-projects>
+
+    <!-- 6. COMING SOON 2026 -->
+    <app-coming-soon></app-coming-soon>
+
+    <!-- 7. EVENTS & WEDDINGS GALLERY -->
+    <app-gallery></app-gallery>
+
+    <!-- 8. ARTISTS & INTERNATIONAL COLLABORATIONS -->
+    <app-collaborations></app-collaborations>
+
+    <!-- 9. MEDIA & RADIO RECOGNITION -->
+    <app-media></app-media>
+
+    <!-- 10. CLIENTS CAROUSEL -->
+    <app-clients></app-clients>
+
+    <!-- 11. FOUNDER PROFILE (MC-JEY) -->
+    <app-founder></app-founder>
+
+    <!-- 12. 4-STEP PRODUCTION TIMELINE -->
+    <app-process></app-process>
+
+    <!-- 13. CONTACT & MELAKA STUDIO MAP -->
+    <app-contact [preselectedService]="bookingPreselection()"></app-contact>
+  </main>
+
+  <!-- 14. FOOTER -->
+  <app-footer></app-footer>
+
+  <!-- Interactive Detail Modals -->
+  <app-service-modal 
+    [service]="selectedService()" 
+    (closeModalRequest)="onCloseServiceModal()"
+    (requestBooking)="onRequestBooking($event)">
+  </app-service-modal>
+
+  <app-project-modal 
+    [project]="selectedProject()" 
+    (closeModalRequest)="onCloseProjectModal()">
+  </app-project-modal>
+
+</div>
